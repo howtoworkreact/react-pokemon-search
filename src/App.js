@@ -1,5 +1,7 @@
 import "./App.css";
 import pokemon from "./pokemon.json";
+import PropTypes from "prop-types";
+import { useState } from "react";
 
 const PokemonRow = ({ pokemon }) => (
   <tr>
@@ -8,7 +10,17 @@ const PokemonRow = ({ pokemon }) => (
   </tr>
 );
 
+PokemonRow.propTypes = {
+  pokemon: PropTypes.shape({
+    name: PropTypes.shape({
+      english: PropTypes.string,
+    }),
+    type: PropTypes.arrayOf(PropTypes.string),
+  }),
+};
+
 function App() {
+  const [filter, setFilter] = useState("");
   return (
     <div
       style={{
@@ -18,6 +30,7 @@ function App() {
       }}
     >
       <h1 className="title">Pokemon Search Engine</h1>
+      <input value={filter} onChange={(evt) => setFilter(evt.target.value)} />
       <table width="100%">
         <thead>
           <tr>
@@ -26,9 +39,14 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {pokemon.slice(0, 20).map((pokemon) => (
-            <PokemonRow pokemon={pokemon} key={pokemon.id}></PokemonRow>
-          ))}
+          {pokemon
+            .filter((pokemon) =>
+              pokemon.name.english.toLowerCase().includes(filter.toLowerCase())
+            )
+            .slice(0, 20)
+            .map((pokemon) => (
+              <PokemonRow pokemon={pokemon} key={pokemon.id}></PokemonRow>
+            ))}
         </tbody>
       </table>
     </div>
