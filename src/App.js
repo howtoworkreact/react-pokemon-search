@@ -1,9 +1,31 @@
 import "./App.css";
-
+import pokemon from "./pokemon.json";
 function App() {
   return (
-    <div className="App">
-      <h1>Pokemon Search Engine</h1>
+    <div
+      style={{
+        margin: "auto",
+        width: 500,
+        paddingTop: "1rem",
+      }}
+    >
+      <h1 className="title">Pokemon Search Engine</h1>
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>Home</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pokemon.slice(0, 20).map((pokemon) => (
+            <tr key={pokemon.id}>
+              <td>{pokemon.name.english}</td>
+              <td>{pokemon.type.join(", ")}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
