@@ -1,6 +1,7 @@
 import "./App.css";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import styled from "@emotion/styled";
 
 const PokemonRow = ({ pokemon, onSelect }) => (
   <tr>
@@ -52,6 +53,11 @@ PokemonInfo.propTypes = {
   }),
 };
 
+const Title = styled.h1`
+  text-align: center;
+  color: darkcyan;
+`;
+
 function App() {
   const [filter, setFilter] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
@@ -71,7 +77,7 @@ function App() {
         paddingTop: "1rem",
       }}
     >
-      <h1 className="title">Pokemon Search Engine</h1>
+      <Title>Pokemon Search Engine</Title>
       <input value={filter} onChange={(evt) => setFilter(evt.target.value)} />
       <div
         style={{
