@@ -1,5 +1,6 @@
 .title {
   text-align: center;
+  color:darkcyan
 }
 
 th {
@@ -11,4 +12,11 @@ input{
   width: 100%;
   font-size: x-large;
   padding: 0.2rem ;
+}
+
+.pokemon-tbl{
+  color:orange;
+}
+.pokemon-tbl-row{
+  color:darkgoldenrod;
 }

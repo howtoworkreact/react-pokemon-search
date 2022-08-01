@@ -25,9 +25,9 @@ PokemonRow.propTypes = {
 
 const PokemonInfo = ({ name, base }) => (
   <div>
-    <h1>{name.english}</h1>
+    <h1 className="pokemon-tbl">{name.english}</h1>
     <table>
-      <tbody>
+      <tbody className="pokemon-tbl-row">
         {Object.keys(base).map((key) => (
           <tr key={key}>
             <td>{key}</td>
@@ -100,9 +100,7 @@ function App() {
           </table>
         </div>
         {selectedItem && (
-          <div style={{ color: "orange" }}>
-            {selectedItem && <PokemonInfo {...selectedItem} />}
-          </div>
+          <div>{selectedItem && <PokemonInfo {...selectedItem} />}</div>
         )}
       </div>
     </div>
