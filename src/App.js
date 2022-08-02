@@ -2,13 +2,19 @@ import "./App.css";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
-
+import { Button } from "@material-ui/core";
 const PokemonRow = ({ pokemon, onSelect }) => (
   <tr>
     <td>{pokemon.name.english}</td>
     <td>{pokemon.type.join(", ")}</td>
     <td>
-      <button onClick={() => onSelect(pokemon)}>select</button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => onSelect(pokemon)}
+      >
+        More Info
+      </Button>
     </td>
   </tr>
 );
